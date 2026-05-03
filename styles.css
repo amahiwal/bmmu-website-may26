@@ -227,7 +227,7 @@ button:focus-visible {
 
 .button {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 40px;
 }
 
@@ -317,7 +317,7 @@ h1 {
 
 .hero p:not(.pill) {
   color: #272727;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 11px;
 }
 
@@ -392,7 +392,7 @@ h2 {
 .intro {
   color: rgba(255, 255, 255, 0.78);
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: 16px;
   max-width: 720px;
 }
 
@@ -497,7 +497,7 @@ h2 {
 }
 
 .feature p {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .micro {
@@ -674,7 +674,7 @@ figure:hover span {
 
 blockquote {
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.35;
   margin: 0;
 }
@@ -876,7 +876,7 @@ blockquote {
 }
 
 .book p {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .book a {
