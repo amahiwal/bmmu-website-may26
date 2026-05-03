@@ -11,7 +11,7 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 
 const revealTargets = [
   ...document.querySelectorAll(
-    ".big-six .content, .split-grid > *, .testimonials .content, .quote-grid > *, .tickets .content, .ticket, .right-fit .content, .fit-grid > *, .book .content"
+    ".big-six .content, .split-grid > *, .testimonials .content, .quote-grid > *, .tickets .content, .ticket, .right-fit .content, .fit-grid > *, .book .content, .slider-section .content, .person-card, .speaker-card, .rolling-list-section"
   ),
 ];
 
