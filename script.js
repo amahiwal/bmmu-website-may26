@@ -11,9 +11,34 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 
 const revealTargets = [
   ...document.querySelectorAll(
-    ".big-six .content, .split-grid > *, .testimonials .content, .quote-grid > *, .tickets .content, .ticket, .right-fit .content, .fit-grid > *, .book .content, .slider-section .content, .person-card, .speaker-card, .rolling-list-section, .faq-item"
+    ".reveal, .reveal-stagger"
   ),
 ];
+
+const progressBar = document.getElementById("progressBar");
+const scrollTopBtn = document.getElementById("scrollTop");
+
+const updateProgress = () => {
+  const totalHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (window.pageYOffset / totalHeight) * 100;
+  if (progressBar) progressBar.style.width = `${progress}%`;
+
+  if (scrollTopBtn) {
+    if (progress > 40) {
+      scrollTopBtn.classList.add("is-visible");
+    } else {
+      scrollTopBtn.classList.remove("is-visible");
+    }
+  }
+};
+
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+window.addEventListener("scroll", updateProgress);
 
 
 revealTargets.forEach((target) => target.classList.add("reveal"));
@@ -36,23 +61,8 @@ if ("IntersectionObserver" in window) {
   revealTargets.forEach((target) => target.classList.add("is-visible"));
 }
 
-if (heroArt && heroMark && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  heroArt.addEventListener("pointermove", (event) => {
-    const bounds = heroArt.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+// Mouse hover effect removed as requested
 
-    heroMark.style.setProperty("--hero-x", `${x * 14}px`);
-    heroMark.style.setProperty("--hero-y", `${y * 14}px`);
-    heroMark.style.setProperty("--hero-tilt", `${x * 3}deg`);
-  });
-
-  heroArt.addEventListener("pointerleave", () => {
-    heroMark.style.removeProperty("--hero-x");
-    heroMark.style.removeProperty("--hero-y");
-    heroMark.style.removeProperty("--hero-tilt");
-  });
-}
 
 // FAQ Accordion Logic
 const faqItems = document.querySelectorAll(".faq-item");
@@ -74,3 +84,19 @@ faqItems.forEach((item) => {
   });
 });
 
+// Mobile Menu Toggle
+const menuToggle = document.getElementById("menuToggle");
+const body = document.body;
+const navLinks = document.querySelectorAll(".nav a");
+
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    body.classList.toggle("is-nav-open");
+  });
+}
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    body.classList.remove("is-nav-open");
+  });
+});
