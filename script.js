@@ -11,9 +11,10 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 
 const revealTargets = [
   ...document.querySelectorAll(
-    ".big-six .content, .split-grid > *, .testimonials .content, .quote-grid > *, .tickets .content, .ticket, .right-fit .content, .fit-grid > *, .book .content, .slider-section .content, .person-card, .speaker-card, .rolling-list-section"
+    ".big-six .content, .split-grid > *, .testimonials .content, .quote-grid > *, .tickets .content, .ticket, .right-fit .content, .fit-grid > *, .book .content, .slider-section .content, .person-card, .speaker-card, .rolling-list-section, .faq-item"
   ),
 ];
+
 
 revealTargets.forEach((target) => target.classList.add("reveal"));
 
@@ -52,3 +53,24 @@ if (heroArt && heroMark && !window.matchMedia("(prefers-reduced-motion: reduce)"
     heroMark.style.removeProperty("--hero-tilt");
   });
 }
+
+// FAQ Accordion Logic
+const faqItems = document.querySelectorAll(".faq-item");
+faqItems.forEach((item) => {
+  const trigger = item.querySelector(".faq-trigger");
+  trigger.addEventListener("click", () => {
+    const isActive = item.classList.contains("active");
+    
+    // If we click an already active item, do nothing (as per "always one open")
+    if (isActive) return;
+
+    // Close all other items
+    faqItems.forEach((otherItem) => {
+      otherItem.classList.remove("active");
+    });
+
+    // Open the clicked item
+    item.classList.add("active");
+  });
+});
+
