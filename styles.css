@@ -90,8 +90,7 @@ a {
   width: clamp(150px, 17vw, 220px);
 }
 
-.brand-logo,
-.hero-mark {
+.brand-logo {
   color: var(--muted);
 }
 
@@ -389,8 +388,8 @@ h1 {
 .hero-mark {
   display: block;
   height: auto;
-  max-width: 550px;
-  width: 40vw;
+  max-width: 800px;
+  width: 50vw;
 }
 
 .hero-mark-wrap {
